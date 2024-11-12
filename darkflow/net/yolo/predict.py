@@ -1,10 +1,11 @@
+from darkflow.cython_utils.cy_yolo_findboxes import yolo_box_constructor
 from ...utils.im_transform import imcv2_recolor, imcv2_affine_trans
 from ...utils.box import BoundBox, box_iou, prob_compare
 import numpy as np
 import cv2
 import os
 import json
-from darkflow.cython_utils.cy_yolo_findboxes import yolo_box_constructor
+
 
 
 def _fix(obj, dims, scale, offs):
