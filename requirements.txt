@@ -1,5 +1,5 @@
 opencv-python-headless
 scipy
-tensorflow
+tensorflow==2.3.0
 streamlit
 tensorflow-slim
