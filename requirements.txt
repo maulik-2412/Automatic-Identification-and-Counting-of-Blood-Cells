@@ -1,9 +1,10 @@
+cython
 streamlit
 numpy==1.21.6
 opencv-python-headless
 scipy==1.7.3
 tensorflow-gpu==2.5.0
 tf-slim==1.1.0
-cython
+
 git+https://github.com/thtrieu/darkflow.git
---no-cache-dir
+
