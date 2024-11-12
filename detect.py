@@ -16,7 +16,7 @@ pred_cls = []  # predicted class
 pred_conf = []  # predicted class confidence
 
 
-def blood_cell_count(file_name):
+def blood_cell_count(image):
     rbc = 0
     wbc = 0
     platelets = 0
@@ -31,9 +31,10 @@ def blood_cell_count(file_name):
     iou_ = []
     iou_value = 0
 
-    tic = time.time()
-    image = cv2.imread('data/' + file_name)
+    tic = time.time() 
     output = tfnet.return_predict(image)
+
+    
 
     for prediction in output:
         label = prediction['label']
@@ -99,14 +100,21 @@ def blood_cell_count(file_name):
     avg_time = (toc - tic) * 1000
     print('{0:.5}'.format(avg_time), 'ms')
 
-    cv2.imwrite('output/' + file_name, image)
-    cv2.imshow('Total RBC: ' + str(rbc) + ', WBC: ' + str(wbc) + ', Platelets: ' + str(platelets), image)
+    """ cv2.imwrite('output/' + file_name, image) 
+     cv2.imshow('Total RBC: ' + str(rbc) + ', WBC: ' + str(wbc) + ', Platelets: ' + str(platelets), image)
     print('Press "ESC" to close . . .')
     if cv2.waitKey(0) & 0xff == 27:
-        cv2.destroyAllWindows()
+        cv2.destroyAllWindows() """
+    return image,rbc,wbc,platelets
 
 
-image_name = 'image_001.jpg'
-blood_cell_count(image_name)
+image_path = 'data/image_001.jpg'
+image = cv2.imread(image_path)
+if image is not None:
+    result_image, rbc_count, wbc_count, platelet_count = blood_cell_count(image)
+    print(f"RBC Count: {rbc_count}, WBC Count: {wbc_count}, Platelet Count: {platelet_count}")
+else:
+    print("Error: Could not read the image. Check the file path.")
+blood_cell_count(image)
 
 print('All Done!')
