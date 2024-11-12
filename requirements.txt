@@ -1,6 +1,6 @@
 cython
 streamlit
-numpy==1.21.6
+numpy
 opencv-python-headless
 scipy==1.7.3
 tensorflow-gpu==2.5.0
